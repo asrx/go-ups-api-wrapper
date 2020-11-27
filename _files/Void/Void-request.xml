@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+    <Header>
+        <UPSSecurity xmlns="http://www.ups.com/XMLSchema/XOLTWS/UPSS/v1.0">
+            <UsernameToken>
+                <Username>********</Username>
+                <Password>********</Password>
+            </UsernameToken>
+            <ServiceAccessToken>
+                <AccessLicenseNumber>********</AccessLicenseNumber>
+            </ServiceAccessToken>
+        </UPSSecurity>
+    </Header>
+    <Body>
+        <VoidShipmentRequest xmlns="http://www.ups.com/XMLSchema/XOLTWS/Void/v1.1">
+            <Request xmlns="http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0">
+                <RequestOption>1</RequestOption>
+            </Request>
+            <VoidShipment>
+                <ShipmentIdentificationNumber>1Z557FW50337911210</ShipmentIdentificationNumber>
+            </VoidShipment>
+        </VoidShipmentRequest>
+    </Body>
+</Envelope>

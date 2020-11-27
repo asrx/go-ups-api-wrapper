@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+    <Header>
+        <UPSSecurity xmlns="http://www.ups.com/XMLSchema/XOLTWS/UPSS/v1.0">
+            <UsernameToken>
+                <Username>********</Username>
+                <Password>********</Password>
+            </UsernameToken>
+            <ServiceAccessToken>
+                <AccessLicenseNumber>********</AccessLicenseNumber>
+            </ServiceAccessToken>
+        </UPSSecurity>
+    </Header>
+    <Body>
+        <TrackRequest xmlns="http://www.ups.com/XMLSchema/XOLTWS/Track/v2.0">
+            <InquiryNumber>1Z12345E0305271640</InquiryNumber>
+        </TrackRequest>
+    </Body>
+</Envelope>

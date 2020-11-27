@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+    <Header>
+        <UPSSecurity xmlns="http://www.ups.com/XMLSchema/XOLTWS/UPSS/v1.0">
+            <UsernameToken>
+                <Username>********</Username>
+                <Password>********</Password>
+            </UsernameToken>
+            <ServiceAccessToken>
+                <AccessLicenseNumber>********</AccessLicenseNumber>
+            </ServiceAccessToken>
+        </UPSSecurity>
+    </Header>
+    <Body>
+        <ShipmentRequest xmlns="http://www.ups.com/XMLSchema/XOLTWS/Ship/v1.0">
+            <Request xmlns="http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0">
+                <RequestOption>nonvalidate</RequestOption>
+            </Request>
+            <Shipment>
+                <Shipper>
+                    <Name>ANL</Name>
+                    <AttentionName>Donovan</AttentionName>
+                    <ShipperNumber>557FW5</ShipperNumber>
+                    <Address>
+                        <AddressLine>16018 Adelante st #D</AddressLine>
+                        <City>IRWINDALE</City>
+                        <StateProvinceCode>CA</StateProvinceCode>
+                        <PostalCode>91702</PostalCode>
+                        <CountryCode>US</CountryCode>
+                    </Address>
+                </Shipper>
+                <ShipTo>
+                    <Name>ANL</Name>
+                    <AttentionName>Alex</AttentionName>
+                    <Address>
+                        <AddressLine>24300 Nandina Ave</AddressLine>
+                        <City>Moreno Valley</City>
+                        <StateProvinceCode>CA</StateProvinceCode>
+                        <PostalCode>92551</PostalCode>
+                        <CountryCode>US</CountryCode>
+                    </Address>
+                </ShipTo>
+                <ShipFrom>
+                    <Name>ANL</Name>
+                    <AttentionName>Donovan</AttentionName>
+                    <Address>
+                        <AddressLine>16018 Adelante st #D</AddressLine>
+                        <City>IRWINDALE</City>
+                        <StateProvinceCode>CA</StateProvinceCode>
+                        <PostalCode>91702</PostalCode>
+                        <CountryCode>US</CountryCode>
+                    </Address>
+                </ShipFrom>
+                <PaymentInformation>
+                    <ShipmentCharge>
+                        <Type>01</Type>
+                        <BillShipper>
+                            <AccountNumber>557FW5</AccountNumber>
+                        </BillShipper>
+                    </ShipmentCharge>
+                </PaymentInformation>
+                <ShipmentRatingOptions>
+                    <NegotiatedRatesIndicator>true</NegotiatedRatesIndicator>
+                </ShipmentRatingOptions>
+                <Service>
+                    <Code>03</Code>
+                </Service>
+                <RatingMethodRequestedIndicator>true</RatingMethodRequestedIndicator>
+                <TaxInformationIndicator>true</TaxInformationIndicator>
+                <Package>
+                    <Packaging>
+                        <Code>02</Code>
+                    </Packaging>
+                    <PackageWeight>
+                        <UnitOfMeasurement>
+                            <Code>LBS</Code>
+                        </UnitOfMeasurement>
+                        <Weight>42</Weight>
+                    </PackageWeight>
+                    <ReferenceNumber>
+                        <Code>PC</Code>
+                        <Value>XXXTestTTTT</Value>
+                    </ReferenceNumber>
+                </Package>
+            </Shipment>
+            <LabelSpecification>
+                <LabelImageFormat>
+                    <Code>gif</Code>
+                </LabelImageFormat>
+            </LabelSpecification>
+        </ShipmentRequest>
+    </Body>
+</Envelope>

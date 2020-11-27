@@ -1,0 +1,69 @@
+package SimpleType
+
+const(
+	// 应收账款客户账户
+	CODE_ACCOUNTS_RECEIVABLE_CUSTOMER_ACCOUNT = "AJ"
+
+	// 专用号码
+	CODE_APPROPRIATION_NUMBER = "AT"
+
+	// 提单号
+	CODE_BILL_OF_LADING_NUMBER = "BM"
+
+	// 货到付款号收
+	CODE_COLLECT_ON_DEVELIVERY_COD_NUMBER = "9V"
+
+	// 经销商订单号
+	CODE_DEALER_ORDER_NUMBER = "ON"
+
+	// 部门编号
+	CODE_DEPARTMENT_NUMBER = "DP"
+
+	// 食品和药物管理局产品代码
+	CODE_FOOD_AND_DRUG_ADMINISTRATION_PRODUCT_CODE = "3Q"
+
+	// 发票号码
+	CODE_INVOICE_NUMBER = "IK"
+
+	// 清单钥匙号码
+	CODE_MANIFEST_KEY_NUMBER = "MK"
+
+	// 型号
+	CODE_MODEL_NUMBER = "MJ"
+
+	// 零件号
+	CODE_PART_NUMBER = "PM"
+
+	// 产品代码
+	CODE_PRODUCTION_CODE = "PC"
+
+	// 采购订单数量
+	CODE_PURCHASE_ORDER_NUMBER = "PO"
+
+	// 购买请求数量
+	CODE_PURCHASE_REQUEST_NUMBER = "RQ"
+
+	// 退货授权号码
+	CODE_RETURN_AUTHORIZATION_NUMBER = "RZ"
+
+	// 销售人员数量
+	CODE_SALESPERSON_NUMBER = "SA"
+
+	// 序列号
+	CODE_SERIAL_NUMBER = "SE"
+
+	// 商店数量
+	CODE_STORE_NUMBER = "ST"
+
+	// 交易参考号
+	CODE_TRANSACTION_REFERENCE_NUMBER = "TN"
+
+	// 雇主身份证号
+	CODE_EMPLOYER_ID_NUMBER = "EI"
+
+	// 联邦纳税人ID
+	CODE_FEDERAL_TAXPAYER_ID = "TJ"
+
+	// 社会安全号码
+	CODE_SOCIAL_SECURITY_NUMBER = "SY"
+)

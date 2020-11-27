@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+    <Header>
+        <UPSSecurity xmlns="http://www.ups.com/XMLSchema/XOLTWS/UPSS/v1.0">
+            <UsernameToken>
+                <Username>********</Username>
+                <Password>********</Password>
+            </UsernameToken>
+            <ServiceAccessToken>
+                <AccessLicenseNumber>********</AccessLicenseNumber>
+            </ServiceAccessToken>
+        </UPSSecurity>
+    </Header>
+    <Body>
+        <RateRequest xmlns="http://www.ups.com/XMLSchema/XOLTWS/Rate/v1.1">
+            <Request xmlns="http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0">
+                <RequestOption>Rate</RequestOption>
+            </Request>
+            <Shipment>
+                <Shipper>
+                    <Name>ANL</Name>
+                    <AttentionName>Donovan</AttentionName>
+                    <ShipperNumber>********</ShipperNumber>
+                    <Address>
+                        <AddressLine>16018 Adelante st Suite D</AddressLine>
+                        <City>Irwindale</City>
+                        <StateProvinceCode>CA</StateProvinceCode>
+                        <PostalCode>91702</PostalCode>
+                        <CountryCode>US</CountryCode>
+                    </Address>
+                </Shipper>
+                <ShipTo>
+                    <Name>ANL</Name>
+                    <AttentionName>Alex</AttentionName>
+                    <Address>
+                        <AddressLine>401 Independence Rd</AddressLine>
+                        <City>FLORENCE</City>
+                        <StateProvinceCode>NJ</StateProvinceCode>
+                        <PostalCode>08518</PostalCode>
+                        <CountryCode>US</CountryCode>
+                        <ResidentialAddressIndicator>true</ResidentialAddressIndicator>
+                    </Address>
+                </ShipTo>
+                <ShipFrom>
+                    <Name>ANL</Name>
+                    <AttentionName>Donovan</AttentionName>
+                    <Address>
+                        <AddressLine>16018 Adelante st Suite D</AddressLine>
+                        <City>Irwindale</City>
+                        <StateProvinceCode>CA</StateProvinceCode>
+                        <PostalCode>91702</PostalCode>
+                        <CountryCode>US</CountryCode>
+                    </Address>
+                </ShipFrom>
+                <FRSPaymentInformation>
+                    <Type>
+                        <Code>01</Code>
+                    </Type>
+                    <AccountNumber>********</AccountNumber>
+                </FRSPaymentInformation>
+                <Service>
+                    <Code>03</Code>
+                </Service>
+                <Package>
+                    <PackagingType>
+                        <Code>02</Code>
+                    </PackagingType>
+                    <Dimensions>
+                        <UnitOfMeasurement>
+                            <Code>IN</Code>
+                        </UnitOfMeasurement>
+                        <Length>40</Length>
+                        <Width>30</Width>
+                        <Height>20</Height>
+                    </Dimensions>
+                    <PackageWeight>
+                        <UnitOfMeasurement>
+                            <Code>LBS</Code>
+                        </UnitOfMeasurement>
+                        <Weight>20</Weight>
+                    </PackageWeight>
+                </Package>
+                <Package>
+                    <PackagingType>
+                        <Code>02</Code>
+                    </PackagingType>
+                    <Dimensions>
+                        <UnitOfMeasurement>
+                            <Code>IN</Code>
+                        </UnitOfMeasurement>
+                        <Length>30</Length>
+                        <Width>30</Width>
+                        <Height>40</Height>
+                    </Dimensions>
+                    <PackageWeight>
+                        <UnitOfMeasurement>
+                            <Code>LBS</Code>
+                        </UnitOfMeasurement>
+                        <Weight>40</Weight>
+                    </PackageWeight>
+                </Package>
+            </Shipment>
+        </RateRequest>
+    </Body>
+</Envelope>

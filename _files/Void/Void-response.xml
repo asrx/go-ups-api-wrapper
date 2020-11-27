@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <void:VoidShipmentResponse xmlns:void="http://www.ups.com/XMLSchema/XOLTWS/Void/v1.1">
+            <common:Response xmlns:common="http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0">
+                <common:ResponseStatus>
+                    <common:Code>1</common:Code>
+                    <common:Description>Success</common:Description>
+                </common:ResponseStatus>
+            </common:Response>
+            <void:SummaryResult>
+                <void:Status>
+                    <void:Code>1</void:Code>
+                    <void:Description>Voided</void:Description>
+                </void:Status>
+            </void:SummaryResult>
+        </void:VoidShipmentResponse>
+    </soapenv:Body>
+</soapenv:Envelope>

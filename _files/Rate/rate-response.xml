@@ -1,0 +1,86 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <rate:RateResponse xmlns:rate="http://www.ups.com/XMLSchema/XOLTWS/Rate/v1.1">
+            <common:Response xmlns:common="http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0">
+                <common:ResponseStatus>
+                    <common:Code>1</common:Code>
+                    <common:Description>Success</common:Description>
+                </common:ResponseStatus>
+                <common:Alert>
+                    <common:Code>119070</common:Code>
+                    <common:Description>A Large Package indicator has automatically been set on applicable package(s).</common:Description>
+                </common:Alert>
+                <common:Alert>
+                    <common:Code>110971</common:Code>
+                    <common:Description>Your invoice may vary from the displayed reference rates</common:Description>
+                </common:Alert>
+                <common:Alert>
+                    <common:Code>120014</common:Code>
+                    <common:Description>A Large Package Minimum Surcharge has been applied to applicable package(s).</common:Description>
+                </common:Alert>
+                <common:TransactionReference/>
+            </common:Response>
+            <rate:RatedShipment>
+                <rate:Service>
+                    <rate:Code>03</rate:Code>
+                    <rate:Description/>
+                </rate:Service>
+                <rate:RatedShipmentAlert>
+                    <rate:Code>119070</rate:Code>
+                    <rate:Description>Large Package indicator has automatically been set on Package 1.
+                        Large Package Surcharge has been added to Package 1.</rate:Description>
+                </rate:RatedShipmentAlert>
+                <rate:RatedShipmentAlert>
+                    <rate:Code>110971</rate:Code>
+                    <rate:Description>Your invoice may vary from the displayed reference rates</rate:Description>
+                </rate:RatedShipmentAlert>
+                <rate:RatedShipmentAlert>
+                    <rate:Code>120014</rate:Code>
+                    <rate:Description>A Large Package Minimum Surcharge has been applied to Package 1.</rate:Description>
+                </rate:RatedShipmentAlert>
+                <rate:BillingWeight>
+                    <rate:UnitOfMeasurement>
+                        <rate:Code>LBS</rate:Code>
+                        <rate:Description>Pounds</rate:Description>
+                    </rate:UnitOfMeasurement>
+                    <rate:Weight>173.0</rate:Weight>
+                </rate:BillingWeight>
+                <rate:TransportationCharges>
+                    <rate:CurrencyCode>USD</rate:CurrencyCode>
+                    <rate:MonetaryValue>317.46</rate:MonetaryValue>
+                </rate:TransportationCharges>
+                <rate:ServiceOptionsCharges>
+                    <rate:CurrencyCode>USD</rate:CurrencyCode>
+                    <rate:MonetaryValue>0.00</rate:MonetaryValue>
+                </rate:ServiceOptionsCharges>
+                <rate:TotalCharges>
+                    <rate:CurrencyCode>USD</rate:CurrencyCode>
+                    <rate:MonetaryValue>317.46</rate:MonetaryValue>
+                </rate:TotalCharges>
+                <rate:RatedPackage>
+                    <rate:TransportationCharges>
+                        <rate:CurrencyCode>USD</rate:CurrencyCode>
+                        <rate:MonetaryValue>317.46</rate:MonetaryValue>
+                    </rate:TransportationCharges>
+                    <rate:ServiceOptionsCharges>
+                        <rate:CurrencyCode>USD</rate:CurrencyCode>
+                        <rate:MonetaryValue>0.00</rate:MonetaryValue>
+                    </rate:ServiceOptionsCharges>
+                    <rate:TotalCharges>
+                        <rate:CurrencyCode>USD</rate:CurrencyCode>
+                        <rate:MonetaryValue>317.46</rate:MonetaryValue>
+                    </rate:TotalCharges>
+                    <rate:Weight>20.0</rate:Weight>
+                    <rate:BillingWeight>
+                        <rate:UnitOfMeasurement>
+                            <rate:Code>LBS</rate:Code>
+                            <rate:Description>Pounds</rate:Description>
+                        </rate:UnitOfMeasurement>
+                        <rate:Weight>173.0</rate:Weight>
+                    </rate:BillingWeight>
+                </rate:RatedPackage>
+            </rate:RatedShipment>
+        </rate:RateResponse>
+    </soapenv:Body>
+</soapenv:Envelope>
