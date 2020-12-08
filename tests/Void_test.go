@@ -19,7 +19,7 @@ func Test_Cancel(t *testing.T) {
 			RequestOption:        []string{"1"},
 		},
 		VoidShipment: &ComplexType.VoidShipment{
-			ShipmentIdentificationNumber: "1Z557FW50393224947",
+			ShipmentIdentificationNumber: "1Z557FW50331231279",
 			//TrackingNumber:               []string{"1Z557FW50393224947","1Z557FW50331443602"},
 		},
 	}
@@ -47,5 +47,6 @@ func Test_Cancel(t *testing.T) {
 	}else{
 		fmt.Println("json: ")
 		fmt.Println(string(byte))
+		fmt.Println("Result:", resp.Response.ResponseStatus.Description)
 	}
 }

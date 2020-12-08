@@ -11,7 +11,7 @@ import (
 	"testing"
 )
 
-func Test_Rate(t *testing.T) {
+func Test_RateGround(t *testing.T) {
 
 	var addr = "Rate"
 	request := &ComplexType.RateRequest{
@@ -22,20 +22,21 @@ func Test_Rate(t *testing.T) {
 			Shipper:                            Shipper,
 			ShipTo:                             Recipient,
 			ShipFrom:							ShippFrom,
-			//FRSPaymentInformation:              &ComplexType.FRSPaymentInfoType{
-			//	Type:          &ComplexType2.CodeDescriptionType{
-			//		Code:        SimpleType.CODE_PREPAID,
-			//	},
-			//	AccountNumber: _ShipperNumber,
-			//},
+			FRSPaymentInformation:              &ComplexType2.FRSPaymentInfoType{
+				Type:          &ComplexType2.CodeDescriptionType{
+					Code:        SimpleType.CODE_PREPAID,
+				},
+				AccountNumber: _ShipperNumber,
+			},
 			Service:                            &ComplexType2.CodeDescriptionType{
 				Code:        SimpleType.S_GROUND,
 			},
 			Package:                            GetRatePackages(),
 			ShipmentRatingOptions: &ComplexType2.ShipmentRatingOptionsType{
 				NegotiatedRatesIndicator:   "true",
-				//FRSShipmentIndicator:       "true",
+			//	FRSShipmentIndicator:       "true",
 			},
+
 			RatingMethodRequestedIndicator:     "true",
 			TaxInformationIndicator:            "true",
 		},
@@ -64,5 +65,128 @@ func Test_Rate(t *testing.T) {
 	}else{
 		fmt.Println("json: ")
 		fmt.Println(string(byte))
+		fmt.Println(resp.RatedShipment[0].NegotiatedRateCharges.TotalCharge.MonetaryValue)
+		fmt.Println(resp.RatedShipment[0].TotalCharges.MonetaryValue)
+	}
+}
+
+func Test_RateGFP(t *testing.T) {
+
+	var addr = "Rate"
+	request := &ComplexType.RateRequest{
+		Request: 				&ComplexType2.RequestType{
+			RequestOption:        []string{"Rate"},
+		},
+		Shipment:               &ComplexType.ShipmentType{
+			Shipper:                            Shipper,
+			ShipTo:                             Recipient,
+			ShipFrom:							ShippFrom,
+			// must
+			FRSPaymentInformation:              &ComplexType2.FRSPaymentInfoType{
+				Type:          &ComplexType2.CodeDescriptionType{
+					Code:        SimpleType.CODE_PREPAID,
+				},
+				AccountNumber: _ShipperNumber,
+			},
+			Service:                            &ComplexType2.CodeDescriptionType{
+				Code:        SimpleType.S_GROUND,
+			},
+			Package:                            GetRatePackagesGfp(),
+			ShipmentRatingOptions: &ComplexType2.ShipmentRatingOptionsType{
+				NegotiatedRatesIndicator:   "true",
+				// must
+				FRSShipmentIndicator:       "true",
+			},
+
+			//RatingMethodRequestedIndicator:     "true",
+			//TaxInformationIndicator:            "true",
+		},
+	}
+
+	client := soap.NewClient(GetRequestUrl(addr))
+	client.AddHeader(GetSoapHeaderSecurity())
+	c := RateService.NewRatePortType(client)
+	resp, fault := c.ProcessRate(request)
+
+	if fault != nil {
+
+		fmt.Println("==================================================")
+		for _, exp := range fault.Errors.ErrorDetail{
+			fmt.Printf("%s: %s\n", exp.PrimaryErrorCode.Code, exp.PrimaryErrorCode.Description)
+		}
+		fmt.Println("**************************************************")
+		return
+	}
+
+	byte, err := json.Marshal(resp)
+
+	if err != nil {
+		fmt.Println("Marshal Error: ")
+		fmt.Printf("%+v\n",resp)
+	}else{
+		fmt.Println("json: ")
+		fmt.Println(string(byte))
+		fmt.Println(resp.RatedShipment[0].NegotiatedRateCharges.TotalCharge.MonetaryValue)
+		fmt.Println(resp.RatedShipment[0].TotalCharges.MonetaryValue)
+	}
+}
+
+// Not through
+func Test_RateHundredweight(t *testing.T) {
+
+	var addr = "Rate"
+	request := &ComplexType.RateRequest{
+		Request: 				&ComplexType2.RequestType{
+			RequestOption:        []string{"Rate"},
+		},
+		Shipment:               &ComplexType.ShipmentType{
+			Shipper:                            Shipper,
+			ShipTo:                             Recipient,
+			ShipFrom:							ShippFrom,
+			FRSPaymentInformation:              &ComplexType2.FRSPaymentInfoType{
+				Type:          &ComplexType2.CodeDescriptionType{
+					Code:        SimpleType.CODE_PREPAID,
+				},
+				AccountNumber: _ShipperNumber,
+			},
+			Service:                            &ComplexType2.CodeDescriptionType{
+				Code:        SimpleType.S_GROUND,
+			},
+			Package:                            GetRatePackagesHundredweight(),
+			ShipmentRatingOptions: &ComplexType2.ShipmentRatingOptionsType{
+				NegotiatedRatesIndicator:   "1",
+				//	FRSShipmentIndicator:       "true",
+			},
+
+			RatingMethodRequestedIndicator:     "true",
+			TaxInformationIndicator:            "true",
+		},
+	}
+
+	client := soap.NewClient(GetRequestUrl(addr))
+	client.AddHeader(GetSoapHeaderSecurity())
+	c := RateService.NewRatePortType(client)
+	resp, fault := c.ProcessRate(request)
+
+	if fault != nil {
+
+		fmt.Println("==================================================")
+		for _, exp := range fault.Errors.ErrorDetail{
+			fmt.Printf("%s: %s\n", exp.PrimaryErrorCode.Code, exp.PrimaryErrorCode.Description)
+		}
+		fmt.Println("**************************************************")
+		return
+	}
+
+	byte, err := json.Marshal(resp)
+
+	if err != nil {
+		fmt.Println("Marshal Error: ")
+		fmt.Printf("%+v\n",resp)
+	}else{
+		fmt.Println("json: ")
+		fmt.Println(string(byte))
+		fmt.Println(resp.RatedShipment[0].NegotiatedRateCharges.TotalCharge.MonetaryValue)
+		fmt.Println(resp.RatedShipment[0].TotalCharges.MonetaryValue)
 	}
 }

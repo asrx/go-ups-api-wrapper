@@ -12,7 +12,7 @@ var Shipper = &ComplexType.Party{
 	AttentionName: "DonovanXu",
 	ShipperNumber: _ShipperNumber,
 	Address:       &ComplexType.AddressType{
-		AddressLine:                []string{"16018 Adelante st #D"},
+		AddressLine:                []string{"16018 Adelante st Suite D"},
 		City:                        "IRWINDALE",
 		StateProvinceCode:           "CA",
 		PostalCode:                  "91702",
@@ -25,7 +25,7 @@ var ShippFrom = &ComplexType.Party{
 	Name:          "ANL",
 	AttentionName: "DonovanXu",
 	Address:       &ComplexType.AddressType{
-		AddressLine:                []string{"16018 Adelante st #D"},
+		AddressLine:                []string{"16018 Adelante st Suite D"},
 		City:                        "IRWINDALE",
 		StateProvinceCode:           "CA",
 		PostalCode:                  "91702",
@@ -51,52 +51,89 @@ var Recipient = &ComplexType.Party{
 func GetRatePackages() []*PackageType {
 	// 包装超过最大尺寸总限制165英寸(长+周长，其中周长是2x宽+ 2x高)。
 	var packages = []*PackageType{}
-	packages = append(packages, &PackageType{
-		PackagingType:               &ComplexType.CodeDescriptionType{
-			Code:        SimpleType.PT_PACKAGE,
-		},
-		//Dimensions:                  &DimensionsType{
-		//	UnitOfMeasurement: &ComplexType.CodeDescriptionType{
-		//		Code:        SimpleType.UOM_IN,
-		//	},
-		//	Length:            "10",
-		//	Width:             "10",
-		//	Height:            "10",
-		//},
-		PackageWeight:               &ComplexType.PackageWeightType{
-			UnitOfMeasurement: &ComplexType.CodeDescriptionType{
-				Code:        SimpleType.UOM_LBS,
+	for i:=0;i <10;i++{
+		packages = append(packages, &PackageType{
+			PackagingType:               &ComplexType.CodeDescriptionType{
+				Code:        SimpleType.PT_PACKAGE,
 			},
-			Weight:            "42",
-		},
-		//Commodity:                   &CommodityType{
-		//	FreightClass: SimpleType.CLASS_50,
-		//},
-	})
+			//Dimensions:                  &ComplexType.DimensionsType{
+			//	UnitOfMeasurement: &ComplexType.CodeDescriptionType{
+			//		Code:        SimpleType.UOM_IN,
+			//	},
+			//	Length:            "4",
+			//	Width:             "4",
+			//	Height:            "4",
+			//},
+			PackageWeight:               &ComplexType.PackageWeightType{
+				UnitOfMeasurement: &ComplexType.CodeDescriptionType{
+					Code:        SimpleType.UOM_LBS,
+				},
+				Weight:            "20",
+			},
+		})
+	}
 
+	return packages
+}
 
-	//packages = append(packages, &PackageType{
-	//	PackagingType:               &ComplexType.CodeDescriptionType{
-	//		Code:        SimpleType.PT_PACKAGE,
-	//	},
-	//	Dimensions:                  &DimensionsType{
-	//		UnitOfMeasurement: &ComplexType.CodeDescriptionType{
-	//			Code:        SimpleType.UOM_IN,
-	//		},
-	//		Length:            "10",
-	//		Width:             "20",
-	//		Height:            "15",
-	//	},
-	//	Commodity:                   &CommodityType{
-	//		FreightClass: SimpleType.CLASS_50,
-	//	},
-	//	PackageWeight:               &PackageWeightType{
-	//		UnitOfMeasurement: &ComplexType.CodeDescriptionType{
-	//			Code:        SimpleType.UOM_LBS,
-	//		},
-	//		Weight:            "22.5",
-	//	},
-	//})
+func GetRatePackagesGfp() []*PackageType {
+	// 包装超过最大尺寸总限制165英寸(长+周长，其中周长是2x宽+ 2x高)。
+	var packages = []*PackageType{}
+	for i:=0;i<10;i++{
+		packages = append(packages, &PackageType{
+			PackagingType:               &ComplexType.CodeDescriptionType{
+				Code:        SimpleType.PT_PACKAGE,
+			},
+			//Dimensions:                  &ComplexType.DimensionsType{
+			//	UnitOfMeasurement: &ComplexType.CodeDescriptionType{
+			//		Code:        SimpleType.UOM_IN,
+			//	},
+			//	Length:            "4",
+			//	Width:             "4",
+			//	Height:            "4",
+			//},
+			PackageWeight:               &ComplexType.PackageWeightType{
+				UnitOfMeasurement: &ComplexType.CodeDescriptionType{
+					Code:        SimpleType.UOM_LBS,
+				},
+				Weight:            "20",
+			},
+			// gfp must
+			Commodity:                   &ComplexType.CommodityType{
+				FreightClass: SimpleType.CLASS_50,
+			},
+		})
+	}
+	return packages
+}
+
+func GetRatePackagesHundredweight() []*PackageType {
+	// 包装超过最大尺寸总限制165英寸(长+周长，其中周长是2x宽+ 2x高)。
+	var packages = []*PackageType{}
+	for i:=0;i<10;i++{
+		packages = append(packages, &PackageType{
+			PackagingType:               &ComplexType.CodeDescriptionType{
+				Code:        SimpleType.PT_PACKAGE,
+			},
+			//Dimensions:                  &ComplexType.DimensionsType{
+			//	UnitOfMeasurement: &ComplexType.CodeDescriptionType{
+			//		Code:        SimpleType.UOM_IN,
+			//	},
+			//	Length:            "4",
+			//	Width:             "4",
+			//	Height:            "4",
+			//},
+			PackageWeight:               &ComplexType.PackageWeightType{
+				UnitOfMeasurement: &ComplexType.CodeDescriptionType{
+					Code:        SimpleType.UOM_LBS,
+				},
+				Weight:            "20",
+			},
+			Commodity:                   &ComplexType.CommodityType{
+				FreightClass: SimpleType.CLASS_50,
+			},
+		})
+	}
 	return packages
 }
 
@@ -119,7 +156,7 @@ func GetShipPackages() []*ComplexType2.PackageType {
 			UnitOfMeasurement: &ComplexType.CodeDescriptionType{
 				Code:        SimpleType.UOM_LBS,
 			},
-			Weight:            "42",
+			Weight:            "22.05",
 		},
 		ReferenceNumber:                    &ComplexType.ReferenceNumberType{
 			Code:  SimpleType.CODE_PRODUCTION_CODE,

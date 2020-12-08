@@ -10,8 +10,8 @@ const (
 	_Password = ""
 	_ShipperNumber = ""
 
-	//_URL = "https://onlinetools.ups.com/webservices/"
-	_URL = "https://wwwcie.ups.com/webservices/"
+	_URL = "https://onlinetools.ups.com/webservices/"
+	//_URL = "https://wwwcie.ups.com/webservices/"
 )
 
 func GetRequestUrl(addr string) string {
