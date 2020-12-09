@@ -24,9 +24,9 @@ var _TestUrl = "https://wwwcie.ups.com/webservices/Rate"
 func NewRatePortType(security *UPSSecurity, testEnv bool) RatePortType {
 	var client = new(soap.Client)
 	if testEnv {
-		client = soap.NewClient(_ProductionUrl)
-	}else {
 		client = soap.NewClient(_TestUrl)
+	}else {
+		client = soap.NewClient(_ProductionUrl)
 	}
 	client.AddHeader(security)
 

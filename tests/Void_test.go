@@ -16,12 +16,12 @@ func Test_Cancel(t *testing.T) {
 			RequestOption:        []string{"1"},
 		},
 		VoidShipment: &ComplexType.VoidShipment{
-			ShipmentIdentificationNumber: "1Z557FW50331231279",
+			ShipmentIdentificationNumber: "1Z557FW50331293622",
 			//TrackingNumber:               []string{"1Z557FW50393224947","1Z557FW50331443602"},
 		},
 	}
 
-	c := VoidService.NewVoidPortType(GetSoapHeaderSecurity(), true)
+	c := VoidService.NewVoidPortType(GetSoapHeaderSecurity(), false)
 	resp, fault := c.ProcessVoid(request)
 
 	if fault != nil {

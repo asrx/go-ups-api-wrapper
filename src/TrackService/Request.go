@@ -25,9 +25,9 @@ func NewTrackPortType(security *ComplexType.UPSSecurity, testEnv bool) TrackPort
 
 	var client = new(soap.Client)
 	if testEnv {
-		client = soap.NewClient(_ProductionUrl)
-	}else {
 		client = soap.NewClient(_TestUrl)
+	}else {
+		client = soap.NewClient(_ProductionUrl)
 	}
 	client.AddHeader(security)
 

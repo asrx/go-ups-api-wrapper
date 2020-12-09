@@ -37,9 +37,9 @@ var _TestUrl = "https://wwwcie.ups.com/webservices/Ship"
 func NewShipPortType(security *UPSSecurity, testEnv bool) ShipPortType {
 	var client = new(soap.Client)
 	if testEnv {
-		client = soap.NewClient(_ProductionUrl)
-	}else {
 		client = soap.NewClient(_TestUrl)
+	}else {
+		client = soap.NewClient(_ProductionUrl)
 	}
 	client.AddHeader(security)
 

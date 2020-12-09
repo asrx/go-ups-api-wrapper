@@ -25,9 +25,9 @@ var _TestUrl = "https://wwwcie.ups.com/webservices/Void"
 func NewVoidPortType(security *UPSSecurity, testEnv bool) VoidPortType {
 	var client = new(soap.Client)
 	if testEnv {
-		client = soap.NewClient(_ProductionUrl)
-	}else {
 		client = soap.NewClient(_TestUrl)
+	}else {
+		client = soap.NewClient(_ProductionUrl)
 	}
 	client.AddHeader(security)
 

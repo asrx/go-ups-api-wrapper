@@ -9,6 +9,7 @@ const (
 	_UserId = ""
 	_Password = ""
 	_ShipperNumber = ""
+
 )
 
 var SoapHeader = &UPSSecurity{
