@@ -128,12 +128,6 @@ type PackageType struct {
 	AdditionalHandlingIndicator string `xml:"AdditionalHandlingIndicator,omitempty"`
 }
 
-type NMFCCommodityType struct {
-	PrimeCode string `xml:"PrimeCode,omitempty"`
-
-	SubCode string `xml:"SubCode,omitempty"`
-}
-
 type PackageServiceOptionsType struct {
 	DeliveryConfirmation *DeliveryConfirmationType `xml:"DeliveryConfirmation,omitempty"`
 

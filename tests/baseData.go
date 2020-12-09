@@ -39,12 +39,26 @@ var Recipient = &ComplexType.Party{
 	AttentionName: "Alex",
 	//ShipperNumber: _ShipperNumber,
 	Address:       &ComplexType.AddressType{
-		AddressLine:                []string{"24300 Nandina Ave"},
-		City:                        "Moreno Valley",
-		StateProvinceCode:           "CA",
-		PostalCode:                  "92551",
+		AddressLine:                []string{"14306 Flora Ln"},
+		City:                        "Wellington",
+		StateProvinceCode:           "FL",
+		PostalCode:                  "33414",
 		CountryCode:                 "US",
-		//ResidentialAddressIndicator: "true",
+		//ResidentialAddressIndicator: "false",
+	},
+}
+
+var Recipient2 = &ComplexType.Party{
+	Name:          "ANL",
+	AttentionName: "Alex",
+	//ShipperNumber: _ShipperNumber,
+	Address:       &ComplexType.AddressType{
+		AddressLine:                []string{"4 Gordon Ln"},
+		City:                        "Westport",
+		StateProvinceCode:           "CT",
+		PostalCode:                  "06880",
+		CountryCode:                 "US",
+		//ResidentialAddressIndicator: "false",
 	},
 }
 

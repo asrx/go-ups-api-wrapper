@@ -60,7 +60,9 @@ func Test_RateGround(t *testing.T) {
 	}else{
 		fmt.Println("json: ")
 		fmt.Println(string(byte))
-		fmt.Println(resp.RatedShipment[0].NegotiatedRateCharges.TotalCharge.MonetaryValue)
+		if resp.RatedShipment[0].NegotiatedRateCharges != nil {
+			fmt.Printf("协议价：%v\n",resp.RatedShipment[0].NegotiatedRateCharges.TotalCharge.MonetaryValue)
+		}
 		fmt.Println(resp.RatedShipment[0].TotalCharges.MonetaryValue)
 	}
 }
@@ -117,8 +119,11 @@ func Test_RateGFP(t *testing.T) {
 	}else{
 		fmt.Println("json: ")
 		fmt.Println(string(byte))
-		fmt.Println(resp.RatedShipment[0].NegotiatedRateCharges.TotalCharge.MonetaryValue)
-		fmt.Println(resp.RatedShipment[0].TotalCharges.MonetaryValue)
+		if resp.RatedShipment[0].NegotiatedRateCharges != nil {
+			fmt.Printf("协议价：%v\n",resp.RatedShipment[0].NegotiatedRateCharges.TotalCharge.MonetaryValue)
+		}
+
+		fmt.Printf("TotalCharges: %v\n", resp.RatedShipment[0].TotalCharges.MonetaryValue)
 	}
 }
 
