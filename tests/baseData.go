@@ -34,6 +34,20 @@ var ShippFrom = &ComplexType.Party{
 	},
 }
 
+var Recipient1 = &ComplexType.Party{
+	Name:          "ANL",
+	AttentionName: "Alex",
+	//ShipperNumber: _ShipperNumber,
+	Address:       &ComplexType.AddressType{
+		AddressLine:                []string{"24300 Nandina Ave"},
+		City:                        "Moreno Valley",
+		StateProvinceCode:           "CA",
+		PostalCode:                  "92551",
+		CountryCode:                 "US",
+		//ResidentialAddressIndicator: "false",
+	},
+}
+
 var Recipient = &ComplexType.Party{
 	Name:          "ANL",
 	AttentionName: "Alex",
