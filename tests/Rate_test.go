@@ -1,19 +1,16 @@
 package tests
 
 import (
+	"encoding/json"
+	"fmt"
 	ComplexType2 "github.com/asrx/go-ups-api-wrapper/src/Common/ComplexType"
 	"github.com/asrx/go-ups-api-wrapper/src/Common/SimpleType"
 	"github.com/asrx/go-ups-api-wrapper/src/RateService"
 	"github.com/asrx/go-ups-api-wrapper/src/RateService/ComplexType"
-	"encoding/json"
-	"fmt"
-	"github.com/asrx/gowsdl/soap"
 	"testing"
 )
 
 func Test_RateGround(t *testing.T) {
-
-	var addr = "Rate"
 	request := &ComplexType.RateRequest{
 		Request: 				&ComplexType2.RequestType{
 			RequestOption:        []string{"Rate"},
@@ -42,9 +39,7 @@ func Test_RateGround(t *testing.T) {
 		},
 	}
 
-	client := soap.NewClient(GetRequestUrl(addr))
-	client.AddHeader(GetSoapHeaderSecurity())
-	c := RateService.NewRatePortType(client)
+	c := RateService.NewRatePortType(GetSoapHeaderSecurity(), false)
 	resp, fault := c.ProcessRate(request)
 
 	if fault != nil {
@@ -71,8 +66,6 @@ func Test_RateGround(t *testing.T) {
 }
 
 func Test_RateGFP(t *testing.T) {
-
-	var addr = "Rate"
 	request := &ComplexType.RateRequest{
 		Request: 				&ComplexType2.RequestType{
 			RequestOption:        []string{"Rate"},
@@ -102,10 +95,8 @@ func Test_RateGFP(t *testing.T) {
 			//TaxInformationIndicator:            "true",
 		},
 	}
-
-	client := soap.NewClient(GetRequestUrl(addr))
-	client.AddHeader(GetSoapHeaderSecurity())
-	c := RateService.NewRatePortType(client)
+	security := GetSoapHeaderSecurity()
+	c := RateService.NewRatePortType(security, false)
 	resp, fault := c.ProcessRate(request)
 
 	if fault != nil {
@@ -134,7 +125,6 @@ func Test_RateGFP(t *testing.T) {
 // Not through
 func Test_RateHundredweight(t *testing.T) {
 
-	var addr = "Rate"
 	request := &ComplexType.RateRequest{
 		Request: 				&ComplexType2.RequestType{
 			RequestOption:        []string{"Rate"},
@@ -163,9 +153,7 @@ func Test_RateHundredweight(t *testing.T) {
 		},
 	}
 
-	client := soap.NewClient(GetRequestUrl(addr))
-	client.AddHeader(GetSoapHeaderSecurity())
-	c := RateService.NewRatePortType(client)
+	c := RateService.NewRatePortType(GetSoapHeaderSecurity(), false)
 	resp, fault := c.ProcessRate(request)
 
 	if fault != nil {

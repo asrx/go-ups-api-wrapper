@@ -1,20 +1,16 @@
 package tests
 
 import (
+	"encoding/json"
+	"fmt"
 	ComplexType2 "github.com/asrx/go-ups-api-wrapper/src/Common/ComplexType"
 	"github.com/asrx/go-ups-api-wrapper/src/Common/SimpleType"
 	"github.com/asrx/go-ups-api-wrapper/src/LbRecoveryService"
 	"github.com/asrx/go-ups-api-wrapper/src/LbRecoveryService/ComplexType"
-	"encoding/json"
-	"fmt"
-	"github.com/asrx/gowsdl/soap"
 	"testing"
 )
 
 func Test_Recovery(t *testing.T) {
-
-	addr := "LBRecovery"
-
 	request := &ComplexType.LabelRecoveryRequest{
 		LabelSpecification:   &ComplexType2.LabelSpecificationType{
 			LabelImageFormat: &ComplexType2.LabelImageFormatType{
@@ -24,9 +20,7 @@ func Test_Recovery(t *testing.T) {
 		TrackingNumber:                "1Z557FW50337911210",
 	}
 
-	client := soap.NewClient(GetRequestUrl(addr))
-	client.AddHeader(GetSoapHeaderSecurity())
-	c := LbRecoveryService.NewPortType(client)
+	c := LbRecoveryService.NewPortType(GetSoapHeaderSecurity(), false)
 	resp, fault := c.ProcessLabelRecovery(request)
 
 	if fault != nil {

@@ -19,7 +19,18 @@ type portType struct {
 	client *soap.Client
 }
 
-func NewPortType(client *soap.Client) PortType {
+var _ProductionUrl = "https://onlinetools.ups.com/webservices/LBRecovery"
+var _TestUrl = "https://wwwcie.ups.com/webservices/LBRecovery"
+
+func NewPortType(security *UPSSecurity, testEnv bool) PortType {
+	var client = new(soap.Client)
+	if testEnv {
+		client = soap.NewClient(_ProductionUrl)
+	}else {
+		client = soap.NewClient(_TestUrl)
+	}
+	client.AddHeader(security)
+
 	return &portType{
 		client: client,
 	}

@@ -1,18 +1,15 @@
 package tests
 
 import (
+	"encoding/json"
+	"fmt"
 	ComplexType2 "github.com/asrx/go-ups-api-wrapper/src/Common/ComplexType"
 	"github.com/asrx/go-ups-api-wrapper/src/VoidService"
 	"github.com/asrx/go-ups-api-wrapper/src/VoidService/ComplexType"
-	"encoding/json"
-	"fmt"
-	"github.com/asrx/gowsdl/soap"
 	"testing"
 )
 
 func Test_Cancel(t *testing.T) {
-
-	var addr = "Void"
 
 	request := &ComplexType.VoidShipmentRequest{
 		Request:      &ComplexType2.RequestType{
@@ -24,9 +21,7 @@ func Test_Cancel(t *testing.T) {
 		},
 	}
 
-	client := soap.NewClient(GetRequestUrl(addr))
-	client.AddHeader(GetSoapHeaderSecurity())
-	c := VoidService.NewVoidPortType(client)
+	c := VoidService.NewVoidPortType(GetSoapHeaderSecurity(), true)
 	resp, fault := c.ProcessVoid(request)
 
 	if fault != nil {

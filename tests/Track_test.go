@@ -6,14 +6,10 @@ import (
 	"github.com/asrx/go-ups-api-wrapper/src/Common/ComplexType"
 	"github.com/asrx/go-ups-api-wrapper/src/TrackService"
 	. "github.com/asrx/go-ups-api-wrapper/src/TrackService/ComplexType"
-	"github.com/asrx/gowsdl/soap"
 	"testing"
 )
 
 func Test_Track(t *testing.T) {
-
-	var addr = "Track"
-
 	var trackNumber = "1Z7A03740307372858"
 
 	//TrackRequest{
@@ -33,9 +29,7 @@ func Test_Track(t *testing.T) {
 		InquiryNumber:                  trackNumber,
 	}
 
-	client := soap.NewClient(GetRequestUrl(addr))
-	client.AddHeader(GetSoapHeaderSecurity())
-	c := TrackService.NewTrackPortType(client)
+	c := TrackService.NewTrackPortType(GetSoapHeaderSecurity(), true)
 	resp, fault := c.ProcessTrack(request)
 
 	if fault != nil {

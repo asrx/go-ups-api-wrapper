@@ -31,7 +31,18 @@ type shipPortType struct {
 	client *soap.Client
 }
 
-func NewShipPortType(client *soap.Client) ShipPortType {
+var _ProductionUrl = "https://onlinetools.ups.com/webservices/Ship"
+var _TestUrl = "https://wwwcie.ups.com/webservices/Ship"
+
+func NewShipPortType(security *UPSSecurity, testEnv bool) ShipPortType {
+	var client = new(soap.Client)
+	if testEnv {
+		client = soap.NewClient(_ProductionUrl)
+	}else {
+		client = soap.NewClient(_TestUrl)
+	}
+	client.AddHeader(security)
+
 	return &shipPortType{
 		client: client,
 	}

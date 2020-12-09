@@ -18,7 +18,18 @@ type ratePortType struct {
 	client *soap.Client
 }
 
-func NewRatePortType(client *soap.Client) RatePortType {
+var _ProductionUrl = "https://onlinetools.ups.com/webservices/Rate"
+var _TestUrl = "https://wwwcie.ups.com/webservices/Rate"
+
+func NewRatePortType(security *UPSSecurity, testEnv bool) RatePortType {
+	var client = new(soap.Client)
+	if testEnv {
+		client = soap.NewClient(_ProductionUrl)
+	}else {
+		client = soap.NewClient(_TestUrl)
+	}
+	client.AddHeader(security)
+
 	return &ratePortType{
 		client: client,
 	}

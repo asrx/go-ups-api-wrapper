@@ -18,7 +18,19 @@ type trackPortType struct {
 	client *soap.Client
 }
 
-func NewTrackPortType(client *soap.Client) TrackPortType {
+var _ProductionUrl = "https://onlinetools.ups.com/webservices/Track"
+var _TestUrl = "https://wwwcie.ups.com/webservices/Track"
+
+func NewTrackPortType(security *ComplexType.UPSSecurity, testEnv bool) TrackPortType {
+
+	var client = new(soap.Client)
+	if testEnv {
+		client = soap.NewClient(_ProductionUrl)
+	}else {
+		client = soap.NewClient(_TestUrl)
+	}
+	client.AddHeader(security)
+
 	return &trackPortType{
 		client: client,
 	}

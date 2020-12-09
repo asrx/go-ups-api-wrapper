@@ -19,7 +19,18 @@ type voidPortType struct {
 	client *soap.Client
 }
 
-func NewVoidPortType(client *soap.Client) VoidPortType {
+var _ProductionUrl = "https://onlinetools.ups.com/webservices/Void"
+var _TestUrl = "https://wwwcie.ups.com/webservices/Void"
+
+func NewVoidPortType(security *UPSSecurity, testEnv bool) VoidPortType {
+	var client = new(soap.Client)
+	if testEnv {
+		client = soap.NewClient(_ProductionUrl)
+	}else {
+		client = soap.NewClient(_TestUrl)
+	}
+	client.AddHeader(security)
+
 	return &voidPortType{
 		client: client,
 	}

@@ -1,19 +1,16 @@
 package tests
 
 import (
+	"encoding/json"
+	"fmt"
 	ComplexType2 "github.com/asrx/go-ups-api-wrapper/src/Common/ComplexType"
 	"github.com/asrx/go-ups-api-wrapper/src/Common/SimpleType"
 	"github.com/asrx/go-ups-api-wrapper/src/ShipService"
 	. "github.com/asrx/go-ups-api-wrapper/src/ShipService/ComplexType"
-	"encoding/json"
-	"fmt"
-	"github.com/asrx/gowsdl/soap"
 	"testing"
 )
 
 func Test_Ship(t *testing.T) {
-
-	var addr = "Ship"
 
 	request := &ShipmentRequest{
 		Request:              &ComplexType2.RequestType{
@@ -90,9 +87,7 @@ func Test_Ship(t *testing.T) {
 		},
 	}
 
-	client := soap.NewClient(GetRequestUrl(addr))
-	client.AddHeader(GetSoapHeaderSecurity())
-	c := ShipService.NewShipPortType(client)
+	c := ShipService.NewShipPortType(GetSoapHeaderSecurity(), true)
 	resp, fault := c.ProcessShipment(request)
 
 	if fault != nil {
