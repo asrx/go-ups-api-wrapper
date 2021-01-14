@@ -51,7 +51,7 @@ var Recipient = &ComplexType.Party{
 func GetRatePackages() []*PackageType {
 	// 包装超过最大尺寸总限制165英寸(长+周长，其中周长是2x宽+ 2x高)。
 	var packages = []*PackageType{}
-	for i:=0;i <10;i++{
+	for i:=0;i <1;i++{
 		packages = append(packages, &PackageType{
 			PackagingType:               &ComplexType.CodeDescriptionType{
 				Code:        SimpleType.PT_PACKAGE,
@@ -70,6 +70,12 @@ func GetRatePackages() []*PackageType {
 				},
 				Weight:            "20",
 			},
+			// 签名服务（无签名: 15.25）
+			//PackageServiceOptions :  &PackageServiceOptionsType{
+			//	DeliveryConfirmation:        &ComplexType.DeliveryConfirmationType{
+			//		DCISType:   "1", // 1: 直接签名（17.25），2: 成人签名 (21.18)
+			//	},
+			//},
 		})
 	}
 
