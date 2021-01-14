@@ -93,6 +93,11 @@ func Test_RateGFP(t *testing.T) {
 
 			//RatingMethodRequestedIndicator:     "true",
 			//TaxInformationIndicator:            "true",
+			ShipmentServiceOptions:     &ComplexType.ShipmentServiceOptionsType{
+				DeliveryConfirmation:              &ComplexType2.DeliveryConfirmationType{
+					DCISType:   "1",// 1: 直接签名，2: 成人签名
+				},
+			},
 		},
 	}
 	security := GetSoapHeaderSecurity()

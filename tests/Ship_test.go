@@ -74,7 +74,11 @@ func Test_Ship(t *testing.T) {
 			//DGSignatoryInfo:                    nil,
 			//MasterCartonID:                     "",
 			//MasterCartonIndicator:              "",
-			//ShipmentServiceOptions:     nil,
+			ShipmentServiceOptions:     &ShipmentServiceOptionsType{
+				DeliveryConfirmation:              &ComplexType2.DeliveryConfirmationType{
+					DCISType:   "1",// 1: 直接签名，2: 成人签名
+				},
+			},
 		},
 		LabelSpecification:   &ComplexType2.LabelSpecificationType{
 			LabelImageFormat: &ComplexType2.LabelImageFormatType{
