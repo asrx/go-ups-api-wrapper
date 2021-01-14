@@ -71,11 +71,11 @@ func GetRatePackages() []*PackageType {
 				Weight:            "20",
 			},
 			// 签名服务（无签名: 15.25）
-			//PackageServiceOptions :  &PackageServiceOptionsType{
-			//	DeliveryConfirmation:        &ComplexType.DeliveryConfirmationType{
-			//		DCISType:   "1", // 1: 直接签名（17.25），2: 成人签名 (21.18)
-			//	},
-			//},
+			PackageServiceOptions :  &PackageServiceOptionsType{
+				DeliveryConfirmation:        &ComplexType.DeliveryConfirmationType{
+					DCISType:   "3", // 1: 17.25，2: 21.18，3: 22.41
+				},
+			},
 		})
 	}
 
