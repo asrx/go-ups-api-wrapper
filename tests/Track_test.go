@@ -10,7 +10,7 @@ import (
 )
 
 func Test_Track(t *testing.T) {
-	var trackNumber = "1Z7A03740307372858"
+	var trackNumber = "1Z7A03740395852174"
 
 	//TrackRequest{
 	//	Request:                        nil,
@@ -29,7 +29,7 @@ func Test_Track(t *testing.T) {
 		InquiryNumber:                  trackNumber,
 	}
 
-	c := TrackService.NewTrackPortType(GetSoapHeaderSecurity(), true)
+	c := TrackService.NewTrackPortType(GetSoapHeaderSecurity(), false)
 	resp, fault := c.ProcessTrack(request)
 
 	if fault != nil {
@@ -46,9 +46,9 @@ func Test_Track(t *testing.T) {
 		for _, p2 :=range p.Activity{
 			switch p2.Status.Code {
 			case "DP", "AR", "FS":
-				fmt.Printf("%s %s | %s : %s %s\n", p2.Date, p2.Time, p2.Status.Description, p2.ActivityLocation.Address.City, p2.ActivityLocation.Address.StateProvinceCode)
+				fmt.Printf("%s %s | 【 %s 】 | %s : %s %s\n", p2.Date, p2.Time, p2.Status.Code, p2.Status.Description, p2.ActivityLocation.Address.City, p2.ActivityLocation.Address.StateProvinceCode)
 			default:
-				fmt.Printf("%s %s | %s\n", p2.Date, p2.Time, p2.Status.Description)
+				fmt.Printf("%s %s | [ %s ] | %s\n", p2.Date, p2.Time, p2.Status.Code, p2.Status.Description)
 			}
 		}
 		fmt.Println("===========================")
